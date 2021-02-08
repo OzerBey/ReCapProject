@@ -11,6 +11,7 @@ Bu katmanın soyut kısmında tüm varlıkların referansını tutabilecek bir I
 
 *Data Access
 Bu katmanda ileride belli koşullara göre kullanılacak/değiştirişlecek database yöntem çeşitlerine yer verilen kısımdır.
+
 *Business
 Bu katman Abstract soyut kısım, Concrete somut kısım olmak üzere iki kısımndan oluşmaktadır.
 
