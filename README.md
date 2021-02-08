@@ -4,6 +4,7 @@ With Layered Structure
 1. Entities
 2. Data Access
 3. Business
+
 Her katmanda ise soyut işlemleri tanımlamak için Abstract, somut işlemleri tanımlamak için Concrete klasörü bulunmakta.
 
 *Entities
