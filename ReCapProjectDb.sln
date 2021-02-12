@@ -1,0 +1,47 @@
+﻿
+
+CREATE TABLE Colors(
+	ColorID int PRIMARY KEY IDENTITY(1,1),
+	ColorName nvarchar(25),
+)
+
+CREATE TABLE Brands(
+	BrandID int PRIMARY KEY IDENTITY(1,1),
+	BrandName nvarchar(25),
+)
+
+CREATE TABLE Cars(
+	CarID int PRIMARY KEY IDENTITY(1,1),
+	BrandID int,
+	ColorID int,
+	ModelYear nvarchar(25),
+	DailyPrice decimal,
+	Descriptions nvarchar(25),
+	FOREIGN KEY (ColorID) REFERENCES Colors(ColorID),
+	FOREIGN KEY (BrandID) REFERENCES Brands(BrandID)
+)
+
+INSERT INTO Colors(ColorName)
+VALUES
+	('White'),
+	('Black'),
+	('Blue');
+
+INSERT INTO Brands(BrandName)
+VALUES
+	('Tesla'),
+	('BMW'),
+	('Audi');
+
+
+INSERT INTO Cars(BrandID,ColorID,ModelYear,DailyPrice,Descriptions)
+VALUES
+	('1','2','2015','1000','Manual Benzine'),
+	('1','3','2017','1500','Automatic Diesel'),
+	('2','1','2019','2000','Automatic Hybrid'),
+	('3','3','2016','1250','Manual Diesel');
+
+
+
+
+	select * from Cars

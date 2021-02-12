@@ -2,6 +2,7 @@
 using System.Linq;
 using Business.Concrete;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Abstract;
 using Entities.Concrete;
@@ -12,9 +13,24 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            Car car1 = new Car()
+            {
+                Id = 7,
+                BrandId = 1,
+                ColorId = 1,
+                ModelYear = "2019",
+                DailyPrice = 2900,
+                Description = "Rental car from the owner "
+            };
+            //  MyFirstWork();
+
+
+        }
+
+        private static void MyFirstWork()
+        {
             CarManager carManager = new CarManager(new InMemoryCarDal());
             ICarDal carDal = new InMemoryCarDal();
-
 
 
             Console.WriteLine("-------------GetAll Method--------------");
@@ -23,11 +39,6 @@ namespace ConsoleUI
                 Console.WriteLine(car.Id + " -> " + car.ModelYear + " : " + car.Description + " " + car.DailyPrice + " TL");
             }
 
-            Console.WriteLine("------------------GetById method--------------------------");
-            foreach (var carId in carDal.GetById(5))
-            {
-                Console.WriteLine("5. daily price of car is {0}", carId.DailyPrice);
-            }
 
             Console.WriteLine("--------------------Add car ------------------------");
             Car car1 = new Car()
@@ -57,6 +68,5 @@ namespace ConsoleUI
             carDal.Update(car1);
             Console.WriteLine("car updated // just simulation");
         }
-
     }
 }
