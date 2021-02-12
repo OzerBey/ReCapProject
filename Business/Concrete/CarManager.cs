@@ -38,6 +38,11 @@ namespace Business.Concrete
             return getColorId;
         }
 
+        public List<Car> GetByDailyPrice(decimal min, decimal max)
+        {
+            return _carDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max); //return List<Car> object
+        }
+
         public List<Car> GetAll()
         {
             //works codes here
