@@ -5,12 +5,13 @@ using System.Text;
 using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace Business.Concrete
 {
     public class CarManager : ICarService
     {
-        private ICarDal _carDal;
+        private ICarDal _carDal; // bagımlılıgımızı minimize ediyoruz yine bagımlı ama fazla degil.. cünkü interface üzerinden bagımlılık vardır
 
         public CarManager(ICarDal carDal) //if CarManager has been, run here
         {
@@ -24,10 +25,14 @@ namespace Business.Concrete
             {
                 _carDal.Add(car);
             }
+
+            Console.WriteLine("new Car added :)");
         }
 
         public List<Car> GetCarsByBrandId(int brandId)
+
         {
+            //select * from Cars where BrandId = 3
             var getCarId = _carDal.GetAll(p => p.BrandId == brandId).ToList();
             return getCarId;
         }
@@ -47,6 +52,11 @@ namespace Business.Concrete
         {
             //works codes here
             return _carDal.GetAll();
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            return _carDal.GetCarDetails();
         }
     }
 }

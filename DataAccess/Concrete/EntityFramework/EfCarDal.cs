@@ -3,64 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using Core.DataAccess;
+using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Concrete.EntityFramework
 {
     //NuGet: DataAccess icinde entityframework kodu yazabilecegimiz anlamına gelir 
-    public class EfCarDal : IEntityRepository<Car>
+    public class EfCarDal : EfEntityRepositoryBase<Car, ReCapDatabaseContext>, ICarDal
     {
-
-
-        public void Add(Car entity)
-        {
-            //IDisposable pattern implemetation of c#  : using bitince bellegi hemen temizler
-            using (ReCapDatabaseContext context = new ReCapDatabaseContext()
-            ) //usingten çıkan islem Garbage collectora giderek hafızadan atılır (daha perfromanslı bir yapı için)
-            {
-                var addedEntity = context.Entry(entity); //git ve veri kaynagından gönderilen product'a bir nesneye eşitle (ekle) referansı yakala
-                addedEntity.State = EntityState.Added; //eklenecek bir n3sne oldugunu belirtiyoruz
-                context.SaveChanges(); //son değişiklik kaydı
-            }
-        }
-
-        public void Update(Car entity)
+        public List<CarDetailDto> GetCarDetails()
         {
             using (ReCapDatabaseContext context = new ReCapDatabaseContext())
             {
-                var updatedEntity = context.Entry(entity);
-                updatedEntity.State = EntityState.Modified;
-                context.SaveChanges();
-            }
-        }
+                var result = from cr in context.Cars
+                             join br in context.Brands
+                                 on cr.BrandId equals br.BrandId
+                             join co in context.Colors
+                                 on cr.ColorId equals co.ColorId
+                             select new CarDetailDto //sonucu buradaki kolonlara (verilere) uydurarak verilmesi söyleniliyor
+                             {
+                                 Description = cr.Description, // döndürülecek olan (istenilen) veri tabanımda carName diye kolon yapmadıgım icin Description verdim
+                                 BrandName = br.BrandName, // istenilen degerleri belirlenen bölümlerden cekerek geri döndürür
+                                 ColorName = co.ColorName,
+                                 DailyPrice = cr.DailyPrice
 
-        public void Delete(Car entity)
-        {
-            using (ReCapDatabaseContext context = new ReCapDatabaseContext())
-            {
-                var deletedEntity = context.Entry(entity);
-                deletedEntity.State = EntityState.Deleted;
-                context.SaveChanges();
-            }
-        }
-        public Car Get(Expression<Func<Car, bool>> filter)
-        {
-            using (ReCapDatabaseContext context = new ReCapDatabaseContext())
-            {
-                return context.Set<Car>().SingleOrDefault(filter);
-            }
-        }
-        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null) //filtre verebilir ama vermeyedebilir default u null oldugu icin
-        {
-            using (ReCapDatabaseContext context = new ReCapDatabaseContext())
-            {
-                return filter == null ? context.Set<Car>().ToList() : context.Set<Car>().Where(filter).ToList();
+                             };
+                return result.ToList();
 
             }
         }
-
-
     }
 }

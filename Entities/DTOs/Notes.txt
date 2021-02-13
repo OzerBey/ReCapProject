@@ -1,0 +1,2 @@
+﻿_DTO : Data Transformation Object_
+	join gibi (operasyonları ) işlemlerini yapoacagımız yer Entities katmanında yapılmaktadır

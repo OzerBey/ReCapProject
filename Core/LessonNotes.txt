@@ -1,0 +1,14 @@
+﻿Evrensel kodlarimizi (tüm projelerde kullanilacak kodlarimizi) yazdigimiz kisimdir Core katmani;
+	burada hangi katman ile ilgilenceksek onunla ilgili bir klasor ekliyoruz..
+	//core katmanina bir kere kod yazariz bütün projelerde kullanabilriiz
+	?**Core : Evrensel katmanimizdir**?
+
+		!*!***Core katmani diger katmanlari referans ALMAZ**** 
+			-> alirsa o katmana bagimli oldugumuz anlamina gelir bu da istemeyecegimiz bir durumdur.
+
+*namespace : classlari interfaceleri tek bir -isim uzayına- koyup oradan rahatca ulasabiliyoruz
+
+
+DTO: Data Transformation Object
+
+Entity ler tablolari simule eder (veritabanı nesnesidir)

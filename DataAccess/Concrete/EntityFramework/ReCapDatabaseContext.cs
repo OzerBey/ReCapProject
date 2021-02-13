@@ -12,9 +12,11 @@ namespace DataAccess.Concrete.EntityFramework
         {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=ReCapDatabase;Trusted_Connection=true");
         }
+        //Bizdeki nesneleri Database deki tablo ile eşleştirir!
         public DbSet<Car> Cars { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Color> Colors { get; set; }
+
 
     }
 }

@@ -1,0 +1,4 @@
+﻿Veri erişimi ilgilendiren kodlar burada yer alacak.
+
+	
+		*namespace : classlari interfaceleri tek bir -isim uzayına- koyup oradan rahatca ulasabiliyoruz
