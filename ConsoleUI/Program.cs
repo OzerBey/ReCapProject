@@ -12,24 +12,79 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            #region Tests 
+            //ColorTest();
+            //BrandTest();
+            //CarTest();
+            //newCarAdd(carManager);
+            //MyFirstWork();
+            
+            #endregion
+
+        }
+
+        private static void ColorTest()
+        {
+            ColorManager colorManager = new ColorManager(new EfColorDal());
+
+            colorManager.Add(new Color()
+            {
+                ColorName = "Yellow"
+            });
+            colorManager.Update(colorManager.GetById(1002));
+
+
+            foreach (var color in colorManager.GetAll())
+            {
+                Console.WriteLine("{0}- {1}", color.ColorId, color.ColorName);
+            }
+        }
+
+        private static void BrandTest()
+        {
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            brandManager.Add(new Brand()
+            {
+                BrandName = "Ford"
+            });
+
+
+            string[] brandNames = new[]
+            {
+                "Opel",
+                "Nissan",
+                "Lamborghini",
+                "Honda",
+                "Toyota",
+                "Merdeces"
+            };
+
+            foreach (var brand in brandNames)
+            {
+                brandManager.Add(new Brand()
+                {
+                    BrandName = brand
+                });
+                foreach (var brandRead in brandManager.GetAll())
+                {
+                    Console.WriteLine(brandRead.BrandName);
+                }
+            }
+        }
+
+        private static void CarTest()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
+            foreach (var car in carManager.GetAll())
+            {
+                Console.WriteLine(car.CarId);
+            }
+
             Console.WriteLine("Description | BrandName | ColorName | DailyPrice");
             foreach (var car in carManager.GetCarDetails())
             {
                 Console.WriteLine("{0} - {1} -  {2} - {3}", car.Description, car.BrandName, car.ColorName, car.DailyPrice);
             }
-
-           // newCarAdd(carManager);
-
-            Console.WriteLine("---------Car TEST-----------");
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
-            foreach (var brand in brandManager.GetAll())
-            {
-                Console.WriteLine(brand.BrandName);
-            }
-
-
-            //MyFirstWork();
         }
 
         private static void newCarAdd(CarManager carManager)

@@ -16,14 +16,30 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
+        public void Add(Brand brand)
+        {
+            _brandDal.Add(brand);
+        }
+
+        public void Update(Brand brand)
+        {
+            _brandDal.Update(brand);
+        }
+
+        public void Delete(Brand brand)
+        {
+            _brandDal.Delete(brand);
+        }
+
         public List<Brand> GetAll()
         {
             return _brandDal.GetAll();
         }
 
-        public List<Car> GetCarsByBrandId(int id)
+
+        public Brand GetById(int id)
         {
-            throw new NotImplementedException();
+            return _brandDal.Get(p => p.BrandId == id);
         }
     }
 }

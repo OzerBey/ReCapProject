@@ -7,7 +7,13 @@ namespace Business.Abstract
 {
     public interface IBrandService
     {
+        //CRUD operations
+        void Add(Brand brand);
+        void Update(Brand brand);
+        void Delete(Brand brand);
         List<Brand> GetAll();
-        List<Car> GetCarsByBrandId(int id); //for brand id
+
+        //filtered
+        Brand GetById(int id);
     }
 }

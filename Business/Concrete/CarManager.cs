@@ -24,9 +24,29 @@ namespace Business.Concrete
             if (car.DailyPrice > 0 && car.Description.Length > 2)
             {
                 _carDal.Add(car);
+
+                Console.WriteLine("new Car added :)");
+            }
+            else
+            {
+                Console.WriteLine("invalid car descripton please try again! description  length of car must be at least 2 character ");
             }
 
-            Console.WriteLine("new Car added :)");
+        }
+
+        public void Update(Car car)
+        {
+            _carDal.Update(car);
+        }
+
+        public void Delete(Car car)
+        {
+            _carDal.Delete(car);
+        }
+
+        public Car GetById(int id)
+        {
+            return _carDal.Get(p => p.CarId == id);
         }
 
         public List<Car> GetCarsByBrandId(int brandId)
@@ -52,6 +72,11 @@ namespace Business.Concrete
         {
             //works codes here
             return _carDal.GetAll();
+        }
+
+        public List<Car> GetByModelYear(string modelYear)
+        {
+            return _carDal.GetAll(p => p.ModelYear == modelYear);
         }
 
         public List<CarDetailDto> GetCarDetails()
