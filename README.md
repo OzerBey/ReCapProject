@@ -31,4 +31,5 @@ Bu katmanda genel olarak ilgili proje veya farklı yapılarla ortak kullanlan b�
 Evrensel kodlarimizi (tüm projelerde kullanilacak kodlarimizi) yazdigimiz kisimdir Core katmani;
 	burada hangi katman ile ilgilenceksek onunla ilgili bir klasor ekliyoruz..
 	//core katmanina bir kere kod yazariz bütün projelerde kullanabilriiz
+	
 	**Core : Evrensel katmanimizdir ve Core katmanı diger katmaları referans almaz !**
