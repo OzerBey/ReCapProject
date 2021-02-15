@@ -23,7 +23,7 @@ namespace Business.Concrete
         //Araba günlük fiyatı 0'dan büyük olmalıdır.
         public IResult Add(Car car)
         {
-            if (car.DailyPrice > 0 && car.Description.Length > 2)
+            if (car.DailyPrice > 0 && car.Descriptions.Length > 2)
             {
                 _carDal.Add(car);
             }

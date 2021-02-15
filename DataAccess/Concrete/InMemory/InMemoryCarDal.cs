@@ -17,12 +17,12 @@ namespace DataAccess.Concrete.InMemory
         {
             _cars = new List<Car>()
             {
-                new Car{ CarId = 1,BrandId = 1,ColorId = 1,DailyPrice = 2510,ModelYear = "2010",Description = "Rental Car, Urgent sale vehicle"},
-                new Car{ CarId = 2,BrandId = 1,ColorId = 2,DailyPrice = 1253,ModelYear = "2006",Description = "Offroad rental Car"},
-                new Car{ CarId = 3,BrandId = 2,ColorId = 3,DailyPrice = 5300,ModelYear = "2019",Description = "Campaign vehicle rental Car"},
-                new Car{ CarId = 4,BrandId = 2,ColorId = 4,DailyPrice = 2350,ModelYear = "2009",Description = "discounted vehicle rental Car"},
-                new Car(){ CarId = 5,BrandId = 3,ColorId = 5,DailyPrice = 13000,ModelYear = "2021",Description = "Rental new model Car"},
-                new Car(){ CarId = 6,BrandId = 3,ColorId = 6,DailyPrice = 2380,ModelYear = "2017",Description = "Rental Car"},
+                new Car{ CarId = 1,BrandId = 1,ColorId = 1,DailyPrice = 2510,ModelYear = "2010",Descriptions = "Rental Car, Urgent sale vehicle"},
+                new Car{ CarId = 2,BrandId = 1,ColorId = 2,DailyPrice = 1253,ModelYear = "2006",Descriptions = "Offroad rental Car"},
+                new Car{ CarId = 3,BrandId = 2,ColorId = 3,DailyPrice = 5300,ModelYear = "2019",Descriptions = "Campaign vehicle rental Car"},
+                new Car{ CarId = 4,BrandId = 2,ColorId = 4,DailyPrice = 2350,ModelYear = "2009",Descriptions = "discounted vehicle rental Car"},
+                new Car(){ CarId = 5,BrandId = 3,ColorId = 5,DailyPrice = 13000,ModelYear = "2021",Descriptions = "Rental new model Car"},
+                new Car(){ CarId = 6,BrandId = 3,ColorId = 6,DailyPrice = 2380,ModelYear = "2017",Descriptions = "Rental Car"},
             };
         }
 
@@ -58,7 +58,7 @@ namespace DataAccess.Concrete.InMemory
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.DailyPrice = car.DailyPrice;
             carToUpdate.ModelYear = car.ModelYear;
-            carToUpdate.Description = car.Description;
+            carToUpdate.Descriptions = car.Descriptions;
         }
 
         public void Delete(Car car)

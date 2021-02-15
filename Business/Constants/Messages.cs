@@ -29,7 +29,24 @@ namespace Business.Constants
         public static string ColorUpdated = "Color updated";
         public static string ColorDeleted = "Color deleted";
         public static string ColorListed = "Color listed";
-
+        //for user
+        public static string UserAdded = "User added";
+        public static string UserNameInvalid = "Name of User is invalid";
+        public static string UserUpdated = "User updated";
+        public static string UserDeleted = "User deleted";
+        public static string UserListed = "User listed";
+        //for customer
+        public static string CustomerAdded = "Customer added";
+        public static string CustomerNameInvalid = "Name of Customer is invalid";
+        public static string CustomerUpdated = "Customer updated";
+        public static string CustomerDeleted = "Customer deleted";
+        public static string CustomerListed = "Customer listed";
+        //for rental
+        public static string RentalAdded = "Rental added";
+        public static string RentalNameInvalid = "Name of Rental is invalid";
+        public static string RentalUpdated = "Rental updated";
+        public static string RentalDeleted = "Rental deleted";
+        public static string RentalListed = "RentalRental listed";
         //for general maintenance 
         public static string MaintenanceTime="Maintenance time :( ";
       
