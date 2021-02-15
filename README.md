@@ -1,5 +1,5 @@
 # ReCapProject
-With Layered Structure
+'Katmanlı' 'OOP'
  Sistemim dört katman oluşuyor:
 1. Entities
 2. Data Access
