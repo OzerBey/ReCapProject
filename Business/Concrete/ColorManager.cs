@@ -36,14 +36,14 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ColorDeleted);
         }
 
-        public List<Color> GetAll()
+        public IDataResult<List<Color>> GetAll()
         {
-            return _colorDal.GetAll();
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll());
         }
 
-        public Color GetById(int id)
+        public IDataResult<Color> GetById(int id)
         {
-            return _colorDal.Get(p => p.ColorId == id);
+            return new SuccessDataResult<Color>(_colorDal.Get(p => p.ColorId == id));
         }
     }
 }

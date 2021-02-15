@@ -25,10 +25,10 @@ namespace Business.Abstract
         IResult Add(Color color);
         IResult Update(Color color);
         IResult Delete(Color color);
-        List<Color> GetAll();
+        IDataResult<List<Color>> GetAll();
 
         //filtered
-        Color GetById(int id);
+        IDataResult<Color> GetById(int id); 
         // List<Car> GetCarsByColorId(int id); // for color id
     }
 }

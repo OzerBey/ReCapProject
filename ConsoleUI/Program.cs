@@ -31,10 +31,10 @@ namespace ConsoleUI
             {
                 ColorName = "Yellow"
             });
-            colorManager.Update(colorManager.GetById(1002));
+            colorManager.Update(colorManager.GetById(1002).Data);
 
 
-            foreach (var color in colorManager.GetAll())
+            foreach (var color in colorManager.GetAll().Data)
             {
                 Console.WriteLine("{0}- {1}", color.ColorId, color.ColorName);
             }
