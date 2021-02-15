@@ -19,6 +19,7 @@ namespace Business.Abstract
         //Color GetById(int id);
         //// List<Car> GetCarsByColorId(int id); // for color id
 
+        //------------------------------------------------------------------
 
         //after IResult and IDataResult
         //CRUD operations

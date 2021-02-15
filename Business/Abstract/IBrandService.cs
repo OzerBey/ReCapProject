@@ -18,6 +18,8 @@ namespace Business.Abstract
         ////filtered
         //Brand GetById(int id);
 
+        //------------------------------------------------------------------
+
         //after IResult and IDataResult
         //CRUD operations
         IResult Add(Brand brand);
