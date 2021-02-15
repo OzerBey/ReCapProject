@@ -18,7 +18,7 @@ namespace ConsoleUI
             //CarTest();
             //newCarAdd(carManager);
             //MyFirstWork();
-             
+
             #endregion
 
         }
@@ -59,17 +59,18 @@ namespace ConsoleUI
                 "Merdeces"
             };
 
-            foreach (var brand in brandNames)
-            {
-                brandManager.Add(new Brand()
-                {
-                    BrandName = brand
-                });
-                foreach (var brandRead in brandManager.GetAll().Data)
-                {
-                    Console.WriteLine(brandRead.BrandName);
-                }
-            }
+            /* foreach (var brand in brandNames)
+             {
+                 brandManager.Add(new Brand()
+                 {
+                     BrandName = brand
+                 });
+
+                 foreach (var brandRead in brandManager.GetAll().Data)
+                 {
+                     Console.WriteLine(brandRead.BrandName);
+                 }
+             }*/
         }
 
         private static void CarTest()
