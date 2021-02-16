@@ -32,7 +32,7 @@ namespace ConsoleUI
 
         Again:
             Console.WriteLine("--------------ReCapProject MENU--------------");
-            Console.WriteLine("1. Rent Car List");
+            Console.WriteLine("1. Car List");
             Console.WriteLine("2. Brand List");
             Console.WriteLine("3. Color List");
             Console.WriteLine("4. Add a rent Car");
@@ -53,7 +53,8 @@ namespace ConsoleUI
             Console.WriteLine("19. A rent a car");
             Console.WriteLine("20. Update Rented Vehicle Information");
             Console.WriteLine("21. Rented Car List");
-            Console.WriteLine("22. System Exit");
+            Console.WriteLine("22. Customer List");
+            Console.WriteLine("23. System Exit");
             string mainMenu;
             int choice = 0;
             try
@@ -75,7 +76,7 @@ namespace ConsoleUI
                             foreach (var carDto in carManager.GetCarDetails().Data)
                             {
 
-                                Console.WriteLine(carDto.BrandName + "/" + carDto.ColorName + "/" + carDto.DailyPrice + "/" + carDto.Description);
+                                Console.WriteLine(carDto.BrandName + " | " + carDto.ColorName + " | " + carDto.DailyPrice + " | " + carDto.Description);
                                 Console.WriteLine("---------------------------------------------");
                             }
                         }
@@ -96,7 +97,7 @@ namespace ConsoleUI
                             Console.WriteLine("----------------Brand List-------------");
                             foreach (var brand in brandManager.GetAll().Data)
                             {
-                                Console.WriteLine("Id:" + brand.BrandId + "/" + brand.BrandName);
+                                Console.WriteLine("Id: " + brand.BrandId + " | " + brand.BrandName);
                                 Console.WriteLine("---------------------------------------------");
                             }
                         }
@@ -117,7 +118,7 @@ namespace ConsoleUI
                         {
                             foreach (var color in colorManager.GetAll().Data)
                             {
-                                Console.WriteLine("Id:" + color.ColorId + "/" + color.ColorName);
+                                Console.WriteLine("Id: " + color.ColorId + " | " + color.ColorName);
                                 Console.WriteLine("---------------------------------------------");
                             }
                         }
@@ -163,10 +164,10 @@ namespace ConsoleUI
                     }
                 case 5:
                     {
-                        string marka;
+                        string brand;
                         Console.WriteLine("Write the brand you want to add");
-                        marka = Console.ReadLine();
-                        Brand brand1 = new Brand { BrandName = marka };
+                        brand = Console.ReadLine();
+                        Brand brand1 = new Brand { BrandName = brand };
                         brandManager.Add(brand1);
                         Console.WriteLine("Brand addition process has been done successfully");
 
@@ -181,10 +182,10 @@ namespace ConsoleUI
                     }
                 case 6:
                     {
-                        string renk;
+                        string color;
                         Console.WriteLine("Write the color you want to add");
-                        renk = Console.ReadLine();
-                        Color color1 = new Color { ColorName = renk };
+                        color = Console.ReadLine();
+                        Color color1 = new Color { ColorName = color };
                         colorManager.Add(color1);
                         Console.WriteLine("Added color has been done successfully");
 
@@ -259,7 +260,7 @@ namespace ConsoleUI
                         {
                             foreach (var i in carManager.GetByDailyPrice(minMoney, maxMoney).Data)
                             {
-                                Console.WriteLine("Id:" + i.CarId + "/" + brandManager.GetById(i.BrandId).Data.BrandName + "/" + colorManager.GetById(i.ColorId).Data.ColorName + "/" + i.ModelYear + "/" + i.DailyPrice + "/" + i.Descriptions);
+                                Console.WriteLine("Id: " + i.CarId + " | " + brandManager.GetById(i.BrandId).Data.BrandName + " | " + colorManager.GetById(i.ColorId).Data.ColorName + " | " + i.ModelYear + " | " + i.DailyPrice + " | " + i.Descriptions);
                             }
                         }
 
@@ -274,13 +275,13 @@ namespace ConsoleUI
 
                 case 10:
                     {
-                        string marka;
+                        string brand;
                         int id = 0;
                         Console.WriteLine("Id");
                         id = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("Write the new brand");
-                        marka = Console.ReadLine();
-                        Brand brand1 = new Brand { BrandId = id, BrandName = marka };
+                        brand = Console.ReadLine();
+                        Brand brand1 = new Brand { BrandId = id, BrandName = brand };
                         brandManager.Update(brand1);
                         Console.WriteLine("Brand update has been done successfully");
 
@@ -295,13 +296,13 @@ namespace ConsoleUI
                     }
                 case 11:
                     {
-                        string renk;
+                        string color;
                         int id = 0;
                         Console.WriteLine("Enter the Id value of the color you want to update.");
                         id = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("Write the new color");
-                        renk = Console.ReadLine();
-                        Color color1 = new Color { ColorId = id, ColorName = renk };
+                        color = Console.ReadLine();
+                        Color color1 = new Color { ColorId = id, ColorName = color };
                         colorManager.Update(color1);
                         Console.WriteLine("Color update has been done successfully");
 
@@ -315,16 +316,16 @@ namespace ConsoleUI
                     }
                 case 12:
                     {
-                        string ad, soyad, email, password;
+                        string name, surname, email, password;
                         Console.WriteLine("Enter your user's name");
-                        ad = Console.ReadLine();
+                        name = Console.ReadLine();
                         Console.WriteLine("Enter user's surname.");
-                        soyad = Console.ReadLine();
+                        surname = Console.ReadLine();
                         Console.WriteLine("enter eMail");
                         email = Console.ReadLine();
                         Console.WriteLine("enter password");
                         password = Console.ReadLine();
-                        User user = new User { FirstName = ad, LastName = soyad, Email = email, Password = password };
+                        User user = new User { FirstName = name, LastName = surname, Email = email, Password = password };
                         userManager.Add(user);
                         Console.WriteLine("The user has been successfully added");
 
@@ -357,18 +358,18 @@ namespace ConsoleUI
                 case 14:
                     {
                         int id = 0;
-                        string ad, soyad, email, password;
+                        string name, surname, email, password;
                         Console.WriteLine("Enter the ID of the user you want to update.");
                         id = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("enter name");
-                        ad = Console.ReadLine();
+                        name = Console.ReadLine();
                         Console.WriteLine("enter surname");
-                        soyad = Console.ReadLine();
+                        surname = Console.ReadLine();
                         Console.WriteLine("Enter email.");
                         email = Console.ReadLine();
                         Console.WriteLine("enter password");
                         password = Console.ReadLine();
-                        User user = new User { FirstName = ad, LastName = soyad, Email = email, Password = password };
+                        User user = new User { FirstName = name, LastName = surname, Email = email, Password = password };
                         userManager.Update(user);
                         Console.WriteLine("User information has been successfully updated");
 
@@ -384,7 +385,7 @@ namespace ConsoleUI
                     {
                         foreach (var user in userManager.GetAll().Data)
                         {
-                            Console.WriteLine("Id:" + user.Id + "/" + user.FirstName + "/" + user.LastName + "/" + user.Email + "/" + user.Password);
+                            Console.WriteLine("Id: " + user.Id + " | " + user.FirstName + " | " + user.LastName + " | " + user.Email + " | " + user.Password);
                             Console.WriteLine("---------------------------------------------");
                         }
                         Console.WriteLine("Would you like to return to the main menu? Yes==y||No==n");
@@ -515,12 +516,36 @@ namespace ConsoleUI
                         Console.WriteLine("----------------Rented Car List-------------");
                         foreach (var rentalDto in rentalManager.GetAll().Data)
                         {
-                            Console.WriteLine("Id:" + rentalDto.RentalId + "/ Customer Id :" + rentalDto.CustomerId + "/" + rentalDto.CarId + "/" + rentalDto.RentDate + "/" + rentalDto.ReturnDate);
+                            Console.WriteLine("Id: " + rentalDto.RentalId + " | Customer Id :" + rentalDto.CustomerId + " | " + rentalDto.CarId + " | " + rentalDto.RentDate + " | " + rentalDto.ReturnDate);
                             Console.WriteLine("---------------------------------------------");
+                        }
+                        Console.WriteLine("Would you like to return to the main menu? Yes==y||No==n");
+                        mainMenu = Console.ReadLine();
+                        if (mainMenu == "y")
+                        {
+                            goto Again;
                         }
                         break;
                     }
                 case 22:
+                    {
+                        Console.WriteLine("----------------Customer List-------------");
+
+                        foreach (var customerDto in customerManager.GetCarDetails().Data)
+                        {
+
+                            Console.WriteLine("Id: " + customerDto.Id + " | User name :" + customerDto.UserName);
+                            Console.WriteLine("---------------------------------------------");
+                        }
+                        Console.WriteLine("Would you like to return to the main menu? Yes==y||No==n");
+                        mainMenu = Console.ReadLine();
+                        if (mainMenu == "y")
+                        {
+                            goto Again;
+                        }
+                        break;
+                    }
+                case 23:
                     {
                         Console.WriteLine("Press to any key");
                         Console.WriteLine("End...");
