@@ -2,7 +2,7 @@
 
 ![rentacar](https://user-images.githubusercontent.com/49093196/108184338-20e78980-711c-11eb-83f6-32aefea7f707.jpg)
 
- 'Rent A Car'
+ ``'Rent A Car'``
  
 'Katmanlı' 'OOP'
  Sistemim dört katman oluşuyor:
