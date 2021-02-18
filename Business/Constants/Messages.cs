@@ -14,18 +14,19 @@ namespace Business.Constants
         //for brand
         public static string BrandAdded = "Brand added";
         public static string BrandNameInvalid = "Name of Brand is invalid";
-        public static string BrandUpdated = "Brand updated"; 
+        public static string BrandUpdated = "Brand updated";
         public static string BrandDeleted = "Brand deleted";
         public static string BrandListed = "Brands listed";
+        public static string BrandNameLengthInvalid = "Brand's length is too long!";
         //for car
         public static string CarAdded = "Car added";
         public static string CarNameInvalid = "Name of car is invalid";
         public static string CarUpdated = "Car updated";
         public static string CarDeleted = "Car deleted";
-        public static string CarListed="Cars listed";
+        public static string CarListed = "Cars listed";
         //for color 
         public static string ColorAdded = "Color added";
-        public static string ColorNameInvalid = "Name of Color is invalid"; 
+        public static string ColorNameInvalid = "Name of Color is invalid";
         public static string ColorUpdated = "Color updated";
         public static string ColorDeleted = "Color deleted";
         public static string ColorListed = "Color listed";
@@ -48,7 +49,7 @@ namespace Business.Constants
         public static string RentalDeleted = "Rental deleted";
         public static string RentalListed = "RentalRental listed";
         //for general maintenance 
-        public static string MaintenanceTime="Maintenance time :( ";
-      
+        public static string MaintenanceTime = "Maintenance time :( ";
+
     }
 }

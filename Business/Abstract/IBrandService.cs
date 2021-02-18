@@ -23,7 +23,7 @@ namespace Business.Abstract
         //after IResult and IDataResult
         //CRUD operations
         IResult Add(Brand brand);
-        IResult Update(Brand brand);
+        IResult Update(Brand brand); 
         IResult Delete(Brand brand);
         IDataResult<List<Brand>> GetAll();
 
