@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -21,17 +24,19 @@ namespace Business.Concrete
         }
         //Araba ismi minimum 2 karakter olmalıdır
         //Araba günlük fiyatı 0'dan büyük olmalıdır.
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
-            if (car.DailyPrice > 0 && car.Descriptions.Length > 2)
-            {
-                _carDal.Add(car);
-            }
-            else
-            {
-                //extra info =>//Console.WriteLine("invalid car description please try again! description  length of car must be at least 2 character ");
-                return new ErrorResult(Messages.CarNameInvalid);
-            }
+            //if (car.DailyPrice > 0 && car.Descriptions.Length > 2)
+            //{
+            //    _carDal.Add(car);
+            //}
+            //else
+            //{
+            //    //extra info =>//Console.WriteLine("invalid car description please try again! description  length of car must be at least 2 character ");
+            //    return new ErrorResult(Messages.CarNameInvalid);
+            //}
+            //ValidationTool.Validate(new CarValidator(), car);
 
             return new SuccessResult(Messages.CarAdded);
         }
