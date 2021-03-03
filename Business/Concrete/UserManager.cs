@@ -5,6 +5,7 @@ using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
+using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -13,7 +14,7 @@ namespace Business.Concrete
 {
     public class UserManager : IUserService
     {
-        private IUserDal _userDal;
+        private IUserDal _userDal; //Dependency injection
 
         public UserManager(IUserDal userDal)
         {
@@ -42,10 +43,20 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserDeleted);
         }
 
+        public IDataResult<List<User>> GetByMail(string email)
+        {
+            return new SuccessDataResult<List<User>>(_userDal.GetAll(u => u.Email == email));
+        }
+
         public IDataResult<List<User>> GetAll()
         {
 
             return new SuccessDataResult<List<User>>(_userDal.GetAll());
+        }
+
+        public IDataResult<List<OperationClaim>> GetClaims(User user)
+        {
+            return new SuccessDataResult<List<OperationClaim>>(_userDal.getClaims(user));
         }
     }
 }
