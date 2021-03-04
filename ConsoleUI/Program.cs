@@ -326,8 +326,8 @@ namespace ConsoleUI
                         email = Console.ReadLine();
                         Console.WriteLine("enter password");
                         password = Console.ReadLine();
-                        User user = new User { FirstName = name, LastName = surname, Email = email, Password = password };
-                        userManager.Add(user);
+                        //User user = new User { FirstName = name, LastName = surname, Email = email, Password = password };
+                        //userManager.Add(user);
                         Console.WriteLine("The user has been successfully added");
 
                         Console.WriteLine("Would you like to return to the main menu? Yes==y||No==n");
@@ -370,8 +370,8 @@ namespace ConsoleUI
                         email = Console.ReadLine();
                         Console.WriteLine("enter password");
                         password = Console.ReadLine();
-                        User user = new User { FirstName = name, LastName = surname, Email = email, Password = password };
-                        userManager.Update(user);
+                        //User user = new User { FirstName = name, LastName = surname, Email = email, Password = password };
+                        //userManager.Update(user);
                         Console.WriteLine("User information has been successfully updated");
 
                         Console.WriteLine("Would you like to return to the main menu? Yes==y||No==n");
@@ -386,7 +386,8 @@ namespace ConsoleUI
                     {
                         foreach (var user in userManager.GetAll().Data)
                         {
-                            Console.WriteLine("Id: " + user.Id + " | " + user.FirstName + " | " + user.LastName + " | " + user.Email + " | " + user.Password);
+                            Console.WriteLine("Id: " + user.Id + " | " + user.FirstName + " | " + user.LastName +
+                                              " | " + user.Email + " | ");// + user.Password);
                             Console.WriteLine("---------------------------------------------");
                         }
                         Console.WriteLine("Would you like to return to the main menu? Yes==y||No==n");

@@ -43,9 +43,10 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserDeleted);
         }
 
-        public IDataResult<List<User>> GetByMail(string email)
+        public User GetByMail(string email)
         {
-            return new SuccessDataResult<List<User>>(_userDal.GetAll(u => u.Email == email));
+            return _userDal.Get(u => u.Email == email);
+            //return new SuccessDataResult<List<User>>(_userDal.GetAll(u => u.Email == email));
         }
 
         public IDataResult<List<User>> GetAll()
@@ -54,9 +55,10 @@ namespace Business.Concrete
             return new SuccessDataResult<List<User>>(_userDal.GetAll());
         }
 
-        public IDataResult<List<OperationClaim>> GetClaims(User user)
+        public List<OperationClaim> GetClaims(User user)
         {
-            return new SuccessDataResult<List<OperationClaim>>(_userDal.getClaims(user));
+            return _userDal.getClaims(user);
+            //return new SuccessDataResult<List<OperationClaim>>(_userDal.getClaims(user));
         }
     }
 }

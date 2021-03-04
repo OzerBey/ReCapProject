@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Core.Entities.Concrete;
 
 namespace Business.Constants
 {
@@ -50,6 +51,14 @@ namespace Business.Constants
         public static string RentalListed = "RentalRental listed";
         //for general maintenance 
         public static string MaintenanceTime = "Maintenance time :( ";
-
+        //for user
+        public static string UserNotFound = "User not found";
+        //for password
+        public static string SuccessfulLogin = "Successful login";
+        public static string PasswordError = "Password is error";
+        //for user
+        public static string UserRegistered = "User registered";
+        public static string UserAlreadyExist = "User already exists";
+        public static string AccessTokenCreated = "Access token created";
     }
 }

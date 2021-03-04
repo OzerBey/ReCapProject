@@ -13,7 +13,7 @@ namespace Core.Utilities.Results
         }
 
         //return result without message
-        public SuccessResult(bool success) : base(true)
+        public SuccessResult() : base(true)
         {
 
         }
