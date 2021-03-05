@@ -57,7 +57,7 @@ namespace Business.Concrete
 
         public List<OperationClaim> GetClaims(User user)
         {
-            return _userDal.getClaims(user);
+            return _userDal.GetClaims(user);
             //return new SuccessDataResult<List<OperationClaim>>(_userDal.getClaims(user));
         }
     }

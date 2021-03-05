@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Text;
-using Autofac;
+﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Business.Abstract;
 using Business.Concrete;
@@ -12,12 +8,13 @@ using Core.Utilities.Security.JWT;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 
-namespace Business.DependecyResolvers.Autofac
+namespace Business.DependencyResolvers.Autofac
 {
     public class AutofacBusinessModule : Module
     {
         protected override void Load(ContainerBuilder builder) //execute when this app run 
         {
+            //create a instance
             //for brand
             builder.RegisterType<BrandManager>().As<IBrandService>().SingleInstance();
             builder.RegisterType<EfBrandDal>().As<IBrandDal>().SingleInstance();

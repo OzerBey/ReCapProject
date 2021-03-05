@@ -20,7 +20,7 @@ namespace Core.Utilities.Security.JWT
         public JwtHelper(IConfiguration configuration)
         {
             Configuration = configuration;
-           // _accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
+           //_accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
             _tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
         }
         public AccessToken CreateToken(User user, List<OperationClaim> operationClaims)

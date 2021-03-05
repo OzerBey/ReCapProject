@@ -12,12 +12,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Business.Concrete;
+using Core.DependencyResolvers;
+using Core.Utilities.IoC;
 using Core.Utilities.Security.Encryption;
 using Core.Utilities.Security.JWT;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
+using Core.Extensions;
 
 namespace WebAPI
 {
@@ -38,6 +42,7 @@ namespace WebAPI
             {
                 options.AddPolicy("AllowOrigin", builder => builder.WithOrigins("http://localhost:3000"));
             });
+
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
@@ -53,6 +58,12 @@ namespace WebAPI
                     IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                 };
             });
+            //for using different modules
+            services.AddDependencyResolvers(new ICoreModule[]
+            {
+                new CoreModule(),
+            });
+
             //singleton for Brands 
             //services.AddSingleton<IBrandService, BrandManager>();
             //services.AddSingleton<IBrandDal, EfBrandDal>();
@@ -71,6 +82,7 @@ namespace WebAPI
             ////singleton for User
             //services.AddSingleton<IUserService, UserManager>();
             //services.AddSingleton<IUserDal, EfUserDal>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -90,8 +102,6 @@ namespace WebAPI
             app.UseAuthentication();
 
             app.UseAuthorization();
-
-
 
             app.UseEndpoints(endpoints =>
             {
