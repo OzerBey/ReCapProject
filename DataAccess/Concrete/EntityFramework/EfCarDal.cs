@@ -26,6 +26,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  on cr.ColorId equals co.ColorId
                              select new CarDetailDto //sonucu buradaki kolonlara (verilere) uydurarak verilmesi söyleniliyor
                              {
+                                 CarId = cr.CarId,
+                                 ModelYear = cr.ModelYear,
                                  Description = cr.Descriptions, // döndürülecek olan (istenilen) veri tabanımda carName diye kolon yapmadıgım icin Description verdim
                                  BrandName = br.BrandName, // istenilen degerleri belirlenen bölümlerden cekerek geri döndürür
                                  ColorName = co.ColorName,

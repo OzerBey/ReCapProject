@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Entities.Concrete;
@@ -115,6 +116,7 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public ActionResult GetAll()
         {
+            Thread.Sleep(1000);//sleep for 1 sec
             var result = _carService.GetAll();
             if (result.Success)
             {
