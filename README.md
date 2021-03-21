@@ -42,3 +42,24 @@ Evrensel kodlarimizi (tüm projelerde kullanilacak kodlarimizi) yazdigimiz kisim
 	//core katmanina bir kere kod yazariz bütün projelerde kullanabilriiz
 	
 	``! Core : Evrensel katmanimizdir ve Core katmanı diger katmanları referans almaz !``
+ ``Content Of This Project``
+ 
+**Generic Repository Design**
+
+**Generic Constraint**
+
+**Entity Framework**
+
+**LINQ**
+
+**Core Layer**
+
+**Web API**
+
+**Autofac**
+
+**FluentValidation**
+
+**AOP Support**
+
+**Validation**
