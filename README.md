@@ -48,9 +48,9 @@ Evrensel kodlarimizi (tüm projelerde kullanilacak kodlarimizi) yazdigimiz kisim
 
 **Generic Constraint**
 
-**Entity Framework**
-
 **LINQ**
+
+**Entity Framework**
 
 **Core Layer**
 
