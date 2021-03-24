@@ -67,23 +67,27 @@ namespace Business.Concrete
             return new SuccessDataResult<Car>(_carDal.Get(p => p.CarId == id));
         }
 
-        public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
+        public IDataResult<List<CarDetailDto>> GetCarsByBrandId(int brandId)
 
         {
             //select * from Cars where BrandId = 3
-            var getCarId = _carDal.GetAll(p => p.BrandId == brandId).ToList();
-            return new SuccessDataResult<List<Car>>(getCarId);
+            var getCarId = _carDal.GetCarDetails(p => p.BrandId == brandId).ToList();
+            return new SuccessDataResult<List<CarDetailDto>>(getCarId,Messages.CarListed);
+        }
+        public IDataResult<List<CarDetailDto>> GetCarDetails()
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
         }
 
-        public IDataResult<List<Car>> GetCarsByColorId(int colorId)
+        public IDataResult<List<CarDetailDto>> GetCarsByColorId(int colorId)
         {
-            var getColorId = _carDal.GetAll(p => p.ColorId == colorId).ToList();
-            return new SuccessDataResult<List<Car>>(getColorId);
+            var getColorId = _carDal.GetCarDetails(p => p.ColorId == colorId).ToList();
+            return new SuccessDataResult<List<CarDetailDto>>(getColorId);
         }
 
-        public IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max)
+        public IDataResult<List<CarDetailDto>> GetByDailyPrice(decimal min, decimal max)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max)); //return List<Car> object)
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(p => p.DailyPrice >= min && p.DailyPrice <= max)); //return List<Car> object)
         }
 
 
@@ -98,15 +102,12 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarListed);
         }
 
-        public IDataResult<List<Car>> GetByModelYear(string modelYear)
+        public IDataResult<List<CarDetailDto>> GetByModelYear(string modelYear)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.ModelYear == modelYear));
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(p => p.ModelYear == modelYear));
         }
 
-        public IDataResult<List<CarDetailDto>> GetCarDetails()
-        {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
-        }
+  
 
         [TransactionScopeAspect]
         public IResult AddTransactionalTest(Car car)

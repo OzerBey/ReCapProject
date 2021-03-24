@@ -261,7 +261,7 @@ namespace ConsoleUI
                         {
                             foreach (var i in carManager.GetByDailyPrice(minMoney, maxMoney).Data)
                             {
-                                Console.WriteLine("Id: " + i.CarId + " | " + brandManager.GetById(i.BrandId).Data.BrandName + " | " + colorManager.GetById(i.ColorId).Data.ColorName + " | " + i.ModelYear + " | " + i.DailyPrice + " | " + i.Descriptions);
+                                Console.WriteLine("Id: " + i.CarId + " | " + brandManager.GetById(i.BrandId).Data.BrandName + " | " + colorManager.GetById(i.ColorId).Data.ColorName + " | " + i.ModelYear + " | " + i.DailyPrice + " | " + i.Description);
                             }
                         }
 

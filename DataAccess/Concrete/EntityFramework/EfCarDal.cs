@@ -15,11 +15,11 @@ namespace DataAccess.Concrete.EntityFramework
     //NuGet: DataAccess icinde entityframework kodu yazabilecegimiz anlamına gelir 
     public class EfCarDal : EfEntityRepositoryBase<Car, ReCapDatabaseContext>, ICarDal
     {
-        public List<CarDetailDto> GetCarDetails()
+        public List<CarDetailDto> GetCarDetails(Expression<Func<Car, bool>> filter = null)
         {
             using (ReCapDatabaseContext context = new ReCapDatabaseContext())
             {
-                var result = from cr in context.Cars
+                var result = from cr in filter == null ? context.Cars : context.Cars.Where(filter)
                              join br in context.Brands
                                  on cr.BrandId equals br.BrandId
                              join co in context.Colors
@@ -27,6 +27,8 @@ namespace DataAccess.Concrete.EntityFramework
                              select new CarDetailDto //sonucu buradaki kolonlara (verilere) uydurarak verilmesi söyleniliyor
                              {
                                  CarId = cr.CarId,
+                                 BrandId = br.BrandId,
+                                 ColorId = co.ColorId,
                                  ModelYear = cr.ModelYear,
                                  Description = cr.Descriptions, // döndürülecek olan (istenilen) veri tabanımda carName diye kolon yapmadıgım icin Description verdim
                                  BrandName = br.BrandName, // istenilen degerleri belirlenen bölümlerden cekerek geri döndürür

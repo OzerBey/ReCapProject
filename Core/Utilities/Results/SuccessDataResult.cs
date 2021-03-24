@@ -26,7 +26,7 @@ namespace Core.Utilities.Results
         }
 
         //without anything
-        public SuccessDataResult():base(default,true)
+        public SuccessDataResult() :base(default,true)
         {
             
         }
