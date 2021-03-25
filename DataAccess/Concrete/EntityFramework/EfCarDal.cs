@@ -24,6 +24,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  on cr.BrandId equals br.BrandId
                              join co in context.Colors
                                  on cr.ColorId equals co.ColorId
+                             join image in context.CarImages on cr.CarId equals image.CarId
                              select new CarDetailDto //sonucu buradaki kolonlara (verilere) uydurarak verilmesi söyleniliyor
                              {
                                  CarId = cr.CarId,
@@ -33,7 +34,10 @@ namespace DataAccess.Concrete.EntityFramework
                                  Description = cr.Descriptions, // döndürülecek olan (istenilen) veri tabanımda carName diye kolon yapmadıgım icin Description verdim
                                  BrandName = br.BrandName, // istenilen degerleri belirlenen bölümlerden cekerek geri döndürür
                                  ColorName = co.ColorName,
-                                 DailyPrice = cr.DailyPrice
+                                 DailyPrice = cr.DailyPrice,
+                                 ImageId = image.Id,
+                                 ImagePath = image.ImagePath,
+                                 CarImageDate = image.CarImageDate
 
                              };
                 return result.ToList();
